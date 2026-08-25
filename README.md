@@ -26,6 +26,44 @@ Set the country with the `cc` field:
 
 Country aliases, decimal integers, and hexadecimal strings such as `"0x76"` are supported.
 
+## Content
+
+Fields inside `content` can be edited directly in the generated JSON:
+
+```json
+{
+  "content": {
+    "grade": "true",
+    "CannotMoveToTownUntilUserLevel5": "false"
+  }
+}
+```
+
+Values are preserved and written back into the original block structure when repacking.
+
+## Server
+
+Server and channel entries can be edited, added, or removed:
+
+```json
+{
+  "server": {
+    "name": "Server",
+    "channel": [
+      {
+        "name": "Channel-1",
+        "ip": "127.0.0.1",
+        "port": "2180"
+      }
+    ]
+  }
+}
+```
+
+Multiple `server` and `channel` blocks are represented as JSON arrays.
+
+Depending on the original 0m file, servers may also be nested inside blocks such as `serverlist`. The original block structure is preserved when repacking.
+
 ## Validation
 
 The editor validates the header, size fields, Adler-32 checksum, zlib stream, internal prefix, strings, item counts, and block structure before unpacking.
