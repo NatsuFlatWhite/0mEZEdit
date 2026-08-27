@@ -2,6 +2,16 @@
 
 Unpacks the 0m structure into clean, easy-to-read JSON so it can be viewed and edited, then repacks the modified JSON into a working 0m file.
 
+## Runtime Behavior
+
+The 0m file is used as the client's initial configuration.
+
+The `cc` value is loaded by the client and sent during the initial connection, where it is checked against the GameServer's configured country code. If the values do not match, the connection is rejected.
+
+Content settings from the 0m file are used during client initialization. After a successful FirstPacket exchange, the client's active content settings are replaced by the content settings provided by the server.
+
+The country code is also used by regional feature checks. The client generally contains the same functionality across regions, but the enabled state of those features can differ depending on the country code and server-side settings.
+
 ## Country Code
 
 Set the country with the `cc` field:
